@@ -12,7 +12,7 @@ $admin = $config['admins'];
 $rand = mt_rand(1,1000);
 
 
-if($config['dev_mode'] == false){
+if($config['dev_mode'] === false){
     if($text == "/start"){
         $bot->sendMessage($userID,"👋<b>Ciao $name</b>!\nQuesta è la base per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
     }
@@ -72,7 +72,7 @@ if($config['dev_mode'] == false){
     }
 }
 
-if($config['dev_mode'] == true){
+if($config['dev_mode'] === true){
     if($text == "/start"){
         $bot->sendMessage($userID,"<b>Hey $name</b>, il bot è attualmente in manutenzione :(");
     }
