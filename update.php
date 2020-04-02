@@ -16,15 +16,15 @@ if(isset($update['message']['from']['first_name'])) {
 }
 
 if(empty($update['message']['from']['last_name'])) {
-    $surname = htmlspecialchars($update['message']['from']['last_name']);
-} else {
     $surname = "<b>Non disponibile.</b>";
+} else {
+    $surname = $update['message']['from']['last_name'];
 }
 
 if(empty($update['message']['from']['username'])) {
-    $username = $update['message']['from']['username'];
+      $username = "<b>Non disponibile.</b>";
 } else {
-    $username = "<b>Non disponibile.</b>";
+    $username = $update['message']['from']['username'];
 }
 
 if(isset($update['message']['message_id'])) {
@@ -35,9 +35,9 @@ if(isset($update['message']['chat'])) {
     $titleGroup = htmlspecialchars($update['message']['chat']['title']);
 }
 if(empty($update['message']['chat']['username'])) {
-    $usernameGroup = $update['message']['chat']['username'];
+      $usernameGroup = "<b>Non disponibile.</b>";
 } else {
-    $usernameGroup = "<b>Non disponibile.</b>";
+    $usernameGroup = $update['message']['chat']['username'];
 }
 
 if(isset($update['message']['chat']['type']) ) {
@@ -55,24 +55,23 @@ if(isset($update['callback_query']['from']['first_name'])) {
     $queryName = htmlspecialchars($update['callback_query']['from']['first_name']);
 }
 if(isset($update['callback_query'])) {
-    //"<b>Non disponibile.</b>";
     if(empty($update['callback_query']['from']['last_name'])){
-        $querySurname = htmlspecialchars($update['callback_query']['from']['last_name']);
+      $querySurname = "<b>Non disponibile.</b>";
     } else {
-        $querySurname = "<b>Non disponibile.</b>";
+        $querySurname = $update['callback_query']['from']['last_name'];
     }
     $queryData = $update['callback_query']['data'];
     if(empty($update['callback_query']['from']['username'])){
-        $queryUsername = $update['callback_query']['from']['username'];
+              $queryUsername = "<b>Non disponibile.</b>";
     } else {
-        $queryUsername = "<b>Non disponibile.</b>";
+        $queryUsername = $update['callback_query']['from']['username'];
     }
     $queryMsgID = $update['callback_query']['message']['message_id'];
     $queryChatType = $update['callback_query']['chat']['type'];
     if(empty($update['callback_query']['chat']['username'])){
-        $queryChatUsername = $update['callback_query']['chat']['username'];
+          $queryChatUsername = "<b>Non disponibile.</b>";
     } else {
-        $queryChatUsername = "<b>Non disponibile.</b>";
+        $queryChatUsername = $update['callback_query']['chat']['username'];
     }
 }
 
