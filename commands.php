@@ -9,6 +9,7 @@ $cmd = '[{"text":"🆘 Comandi del Bot","callback_data":"cmd"}]';
 $tornaindietro = '[{"text":"🔙 Torna Indietro","callback_data":"tornaindietro"}]';
 $config = json_decode(file_get_contents(__DIR__ . '/config.json'),TRUE);
 $admin = $config['admins'];
+$kadmin = '[{"text":"Cancella ❌","callback_data":"cancella"}]';
 $rand = mt_rand(1,1000);
 
 
@@ -54,11 +55,21 @@ if($config['dev_mode'] === false){
         $bot->deleteMessage($chatID,$message_id);
     }
 
+    if(stripos($msg,"@lorenzotm88")=== 0){
+$bot->sendMessage($chatID,"✅Ho avvisato Lorenzo",$kadmin,"inline");
+$link = getLink($chatID);
+$bot->sendMessage(674965839,"Sei stato taggato nel gruppo $link");
+}
 
     if($queryData == "answerQuery"){
         $bot->answerQuery($queryID,"Ciao $queryName!");
     }
 
+    if($queryData == "cancella"){
+        $message_ids = $message_id+1;
+        $bot->deleteMessage($queryChatID,$message_ids);
+    }
+    
     if($queryData == "tast3"){
         $bot->editMessageText($queryUserID,$queryMsgID,"Ciao $queryName!",$tornaindietro,"inline");
     }
