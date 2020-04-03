@@ -71,15 +71,15 @@ $bot->sendMessage(674965839,"Sei stato taggato nel gruppo $link");
     }
     
     if($queryData == "tast3"){
-        $bot->editMessageText($queryUserID,$queryMsgID,"Ciao $queryName!",$tornaindietro,"inline");
+        $bot->editMessageText($queryChatID,$queryMsgID,"Ciao $queryName!",$tornaindietro,"inline");
     }
 
     if($queryData == "tornaindietro"){
-        $bot->editMessageText($queryUserID,$queryMsgID,"Ecco a te una tastiera inline!",$tastierainline,"inline");
+        $bot->editMessageText($queryChatID,$queryMsgID,"Ecco a te una tastiera inline!",$tastierainline,"inline");
     }
 
     if($queryData == "cmd"){
-        $bot->editMessageText($queryUserID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/info => Info Utente\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
+        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/info => Info Utente\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
     }
 }
 
