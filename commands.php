@@ -55,7 +55,7 @@ if($config['dev_mode'] === false){
         $bot->deleteMessage($chatID,$message_id);
     }
 
-    if(stripos($msg,"@lorenzotm88")=== 0){
+    if(stripos($text,"@lorenzotm88")=== 0){
 $bot->sendMessage($chatID,"✅Ho avvisato Lorenzo",$kadmin,"inline");
 $link = getLink($chatID);
 $bot->sendMessage(674965839,"Sei stato taggato nel gruppo $link");
