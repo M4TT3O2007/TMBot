@@ -50,7 +50,9 @@ if(isset($update['callback_query'])) {
 if(isset($update['callback_query']['from'])) {
     $queryUserID = $update['callback_query']['from']['id'];
 }
-
+if(isset($update['callback_query']['message']['chat']['id'])){
+$queryChatID = $update['callback_query']['message']['chat']['id'];
+}
 if(isset($update['callback_query']['from']['first_name'])) {
     $queryName = htmlspecialchars($update['callback_query']['from']['first_name']);
 }
