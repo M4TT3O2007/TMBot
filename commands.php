@@ -34,15 +34,15 @@ if($config['dev_mode'] === false){
 
 if(stripos($text,"/info")=== 0){
         if($typeChat == "private"){
-            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = $username\nID = $chatID\nTipo Chat = Privata";
+            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $chatID";
             $bot->sendMessage($chatID,$msg);
         }
         if($typeChat == "supergroup"){
-            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = $username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
+            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
             $bot->sendMessage($chatID,$msg);
         }
         if($typeChat == "group"){
-            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = $username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
+            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
             $bot->sendMessage($chatID,$msg);
         }
 }
