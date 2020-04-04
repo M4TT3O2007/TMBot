@@ -16,19 +16,23 @@ if($config['dev_mode'] === false){
     if($text == "/start"){
         $bot->sendMessage($userID,"👋<b>Ciao $name</b>!\nQuesta è la base per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
     }
-    if($text == "/tinline"){
-        $bot->sendMessage($chatID,"Ecco a te una tastiera inline!",$tastierainline,"inline");
-    }
 
-    if($text == "/tfisica"){
-        $bot->sendMessage($userID,"Ecco a te una tastiera fisica!",$tastierafisica,"fisica");
-    }
+    if(stripos($replyText,$replyText)=== 0 and $text == "/rinfo"){
+      if($typeChat == "private"){
+          $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID";
+          $bot->sendMessage($chatID,$msg);
+        }
+        if($typeChat == "supergroup"){
+            $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID\n\n<b>Info Chat</b>\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
+            $bot->sendMessage($chatID,$msg);
+        }
+        if($typeChat == "group"){
+            $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID\n\n<b>Info Chat</b>\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
+            $bot->sendMessage($chatID,$msg);
+        }
+}
 
-    if($text == "/rand"){
-        $bot->sendMessage($chatID,"Numero random => $rand");
-    }
-
-    if($text == "/info"){
+if(stripos($text,"/info")=== 0){
         if($typeChat == "private"){
             $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = $username\nID = $chatID\nTipo Chat = Privata";
             $bot->sendMessage($chatID,$msg);
@@ -58,7 +62,7 @@ if($config['dev_mode'] === false){
         $bot->answerQuery($queryID,"Ciao $queryName!");
     }
 
-    
+
     if($queryData == "tast3"){
         $bot->editMessageText($queryChatID,$queryMsgID,"Ciao $queryName!",$tornaindietro,"inline");
     }
@@ -68,7 +72,7 @@ if($config['dev_mode'] === false){
     }
 
     if($queryData == "cmd"){
-        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/info => Info Utente\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
+        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/info => Info Utente\n/rinfo = Info in reply\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
     }
 }
 
