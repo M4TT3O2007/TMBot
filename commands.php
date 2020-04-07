@@ -16,7 +16,15 @@ if($config['dev_mode'] === false){
     if($text == "/start"){
         $bot->sendMessage($userID,"👋<b>Ciao $name</b>!\nQuesta è la base per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
     }
-
+if($text == "/rand"){
+$bot->sendMessage($chatID,"Numero random: $rand");
+}
+    if($text == "/tfisica"){
+        $bot->sendMessage($chatID,"Tastiera fisica",$tastierafisica,"fisica");
+    }
+    if($text == "/tinline"){
+        $bot->sendMessage($chatID,"Tastiera inline",$tastierainline,"inline");
+    }
     if(stripos($replyText,$replyText)=== 0 and $text == "/rinfo"){
       if($typeChat == "private"){
           $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID";
@@ -54,8 +62,8 @@ if(stripos($text,"/info")=== 0){
     if(stripos($text,"/say")=== 0){
         $mess = explode(" ",$text,2);
         $say = $mess[1];
-        $bot->sendMessage($chatID,$say);
         $bot->deleteMessage($chatID,$message_id);
+        $bot->sendMessage($chatID,$say);
     }
 
     if($queryData == "answerQuery"){
