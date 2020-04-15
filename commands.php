@@ -83,7 +83,7 @@ if(stripos($text,"/info")=== 0){
     }
 
     if($queryData == "cmd"){
-        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/info => Info Utente\n/rinfo = Info in reply\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
+        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/dado = Manda un dado\n/info => Info Utente\n/rinfo = Info in reply\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
     }
 }
 
