@@ -52,6 +52,10 @@ class bot {
             ];
         return $this->cURL ('/editMessageText',$args);
     }
+    public function sendDice($chatID){
+        $args = ['chat_id' => $chatID];
+        return $this->cURL ('/sendDice', $args);
+    }
     public function answerQuery ($callbackQueryID,$text) {
         return $this->cURL ('/answerCallbackQuery',['callback_query_id' => $callbackQueryID, 'text' => $text]);
     }
