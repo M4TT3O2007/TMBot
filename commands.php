@@ -25,6 +25,9 @@ $bot->sendMessage($chatID,"Numero random: $rand");
     if($text == "/tinline"){
         $bot->sendMessage($chatID,"Tastiera inline",$tastierainline,"inline");
     }
+        if($text == "/dado"){
+        $bot->sendDice($chatID);
+    }
     if(stripos($replyText,$replyText)=== 0 and $text == "/rinfo"){
       if($typeChat == "private"){
           $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID";
