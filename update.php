@@ -25,6 +25,12 @@ if(empty($update['message']['reply_to_message']['from']['username'])){
 if(isset($update['message']['reply_to_message']['from']['id'])){
   $replyUserID = $update['message']['reply_to_message']['from']['id'];
 }
+if(isset($update['message']['reply_to_message']['message_id'])){
+  $replyMessageID = $update['message']['reply_to_message']['message_id'];
+}
+if(isset($update['message']['reply_to_message']['chat']['id'])){
+  $replyChatID = $update['message']['reply_to_message']['chat']['id'];
+}
 
 if(isset($update['message']['from']['id'])) {
     $userID = $update['message']['from']['id'];
