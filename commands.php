@@ -28,34 +28,34 @@ $bot->sendMessage($chatID,"Numero random: $rand");
         if($text == "/dado"){
         $bot->sendDice($chatID);
     }
-    if(stripos($replyText,$replyText)=== 0 and $text == "/rinfo"){
-      if($typeChat == "private"){
-          $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID";
-          $bot->sendMessage($chatID,$msg);
-        }
-        if($typeChat == "supergroup"){
-            $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID\n\n<b>Info Chat</b>\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
-            $bot->sendMessage($chatID,$msg);
-        }
-        if($typeChat == "group"){
-            $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID\n\n<b>Info Chat</b>\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
-            $bot->sendMessage($chatID,$msg);
-        }
-}
-
-if(stripos($text,"/info")=== 0){
+   if(stripos($text,"/info")=== 0){
+  if(isset($replyText)){
         if($typeChat == "private"){
-            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $chatID";
+            $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID";
             $bot->sendMessage($chatID,$msg);
-        }
-        if($typeChat == "supergroup"){
-            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
-            $bot->sendMessage($chatID,$msg);
-        }
-        if($typeChat == "group"){
-            $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
-            $bot->sendMessage($chatID,$msg);
-        }
+          }
+          if($typeChat == "supergroup"){
+              $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID\n\n<b>Info Chat</b>\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
+              $bot->sendMessage($chatID,$msg);
+          }
+          if($typeChat == "group"){
+              $msg = "<b>Info Utente</b>\nNome = $replyName\nCognome = $replySurname\nUsername = @$replyUsername\nID = $replyUserID\n\n<b>Info Chat</b>\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
+              $bot->sendMessage($chatID,$msg);
+          }
+} else {
+  if($typeChat == "private"){
+       $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $chatID";
+       $bot->sendMessage($chatID,$msg);
+   }
+   if($typeChat == "supergroup"){
+       $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Supergruppo";
+       $bot->sendMessage($chatID,$msg);
+   }
+   if($typeChat == "group"){
+       $msg = "<b>Info Utente</b>\nNome = $name\nCognome = $surname\nUsername = @$username\nID = $userID\n\nInfo Chat\nTitolo = $titleGroup\nID = $chatID\nTipo Chat = Gruppo";
+       $bot->sendMessage($chatID,$msg);
+   }
+}
 }
 
     if(stripos($text,"/admin")=== 0 and in_array($userID,$admin)){
@@ -83,7 +83,7 @@ if(stripos($text,"/info")=== 0){
     }
 
     if($queryData == "cmd"){
-        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/dado = Manda un dado\n/info => Info Utente\n/rinfo = Info in reply\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
+        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/dado = Manda un dado\n/info => Info Utente (sia in reply che non)\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
     }
 }
 
