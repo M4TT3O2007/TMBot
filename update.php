@@ -1,7 +1,10 @@
 <?php
 $update = json_decode(file_get_contents('php://input'), TRUE);
+if(!empty($update['message']['text'])){
     $text = $update['message']['text'];
-
+} else {
+  $text = '';
+}
 if(isset($update['message']['reply_to_message']['text'])){
   $replyText = $update['message']['reply_to_message']['text'];
 }
@@ -86,26 +89,29 @@ if(isset($update['callback_query']['from']['first_name'])) {
     $queryName = htmlspecialchars($update['callback_query']['from']['first_name']);
 }
 if(isset($update['callback_query'])) {
-    if(empty($update['callback_query']['from']['last_name'])){
-    $querySurname = "<b>Non disponibile.</b>";
-    } else {
-    $querySurname = $update['callback_query']['from']['last_name'];
-    }
-    $queryData = $update['callback_query']['data'];
-    if(empty($update['callback_query']['from']['username'])){
-    $queryUsername = "<b>Non disponibile.</b>";
-    } else {
-    $queryUsername = $update['callback_query']['from']['username'];
-    }
     $queryMsgID = $update['callback_query']['message']['message_id'];
     $queryChatType = $update['callback_query']['chat']['type'];
-    if(empty($update['callback_query']['chat']['username'])){
-    $queryChatUsername = "<b>Non disponibile.</b>";
-    } else {
-    $queryChatUsername = $update['callback_query']['chat']['username'];
-    }
 }
-
+if(!empty($update['callback_query']['data'])){
+  $queryData = $update['callback_query']['data'];
+} else {
+  $queryData = '';
+}
+if(empty($update['callback_query']['chat']['username'])){
+  $queryChatUsername = "<b>Non disponibile.</b>";
+  } else {
+  $queryChatUsername = $update['callback_query']['chat']['username'];
+  }
+if(empty($update['callback_query']['from']['username'])){
+  $queryUsername = "<b>Non disponibile.</b>";
+  } else {
+  $queryUsername = $update['callback_query']['from']['username'];
+  }
+if(empty($update['callback_query']['from']['last_name'])){
+  $querySurname = "<b>Non disponibile.</b>";
+  } else {
+  $querySurname = $update['callback_query']['from']['last_name'];
+  }
 if(isset($update['callback_query']['chat']['title'])) {
     $queryChatTitle = htmlspecialchars($update['callback_query']['chat']['title']);
 }

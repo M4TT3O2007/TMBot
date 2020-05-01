@@ -52,14 +52,23 @@ class bot {
             ];
         return $this->cURL ('/editMessageText',$args);
     }
-    public function sendDice($chatID){
-        $args = ['chat_id' => $chatID];
+    public function sendEmoji($chatID, $emojis = false){
+        if($emojis != false){
+            if($emojis == "freccia"){
+            $send = "🎯";
+        } elseif($emojis == "dado") {
+            $send = '🎲';
+        }
+        $args = ['chat_id' => $chatID, 'emoji' => $send];
         return $this->cURL ('/sendDice', $args);
     }
+}
     public function answerQuery ($callbackQueryID,$text) {
-        return $this->cURL ('/answerCallbackQuery',['callback_query_id' => $callbackQueryID, 'text' => $text]);
+        $args = ['callback_query_id' => $callbackQueryID, 'text' => $text];
+        return $this->cURL ('/answerCallbackQuery',$args);
     }
     public function deleteMessage ($chat_id,$message_id) {
-        return $this->cURL ('/deleteMessage',['chat_id' => $chat_id, 'message_id' => $message_id]);
+       $args = ['chat_id' => $chat_id, 'message_id' => $message_id];
+        return $this->cURL ('/deleteMessage',$args);
     }
 }
