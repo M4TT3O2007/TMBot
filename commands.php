@@ -89,7 +89,7 @@ $bot->sendMessage($chatID,"<b>Numero random:</b> $rand");
     }
 
     if($queryData == "cmd"){
-        $bot->editMessageText($queryChatID,$queryMsgID,"Comandi:\n/tfisica => Tastiera Fisica\n/tinline => Tastiera Inline\n/rand => Numero Random da 1 a 1000\n/dado = Manda un dado\n/freccia = Manda una freccia\n/info => Info Utente (sia in reply che non)\n/admin => Comando solo per admin del bot\n/say => Per far inviare un messaggio al bot");
+        $bot->editMessageText($queryChatID,$queryMsgID,"<b>Comandi del Bot</b>\n/tfisica = <b>Tastiera Fisica</b>\n/tinline = <b>Tastiera Inline</b>\n/rand = <b>Numero Random da 1 a 1000</b>\n/dado = <b>Manda un dado</b>\n/freccia = <b>Manda una freccia</b>\n/info = <b>Info Utente (sia in reply che non)</b>\n/admin = <b>Comando solo per admin del bot</b>\n/say = <b>Per far inviare un messaggio al bot</b>");
     }
 }
 
