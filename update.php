@@ -1,117 +1,158 @@
 <?php
-$update = json_decode(file_get_contents('php://input'), TRUE);
-if(!empty($update['message']['text'])){
-    $text = $update['message']['text'];
+
+  $update = json_decode(file_get_contents('php://input'), TRUE);
+
+
+//variabili
+
+if(!empty($update['message']['text'])) {
+  $text = $update['message']['text'];
 } else {
   $text = '';
 }
-if(isset($update['message']['reply_to_message']['text'])){
-  $replyText = $update['message']['reply_to_message']['text'];
-}
-
-if(isset($update['message']['reply_to_message']['from']['first_name'])){
-  $replyName = $update['message']['reply_to_message']['from']['first_name'];
-}
-
-if(empty($update['message']['reply_to_message']['from']['last_name'])){
-  $replySurname = "<b>Non disponibile.</b>";
-} else {
-  $replySurname = $update['message']['reply_to_message']['from']['last_name'];
-}
-
-if(empty($update['message']['reply_to_message']['from']['username'])){
-  $replyUsername = "<b>Non disponibile.</b>";
-} else {
-  $replyUsername = $update['message']['reply_to_message']['from']['username'];
-}
-
-if(isset($update['message']['reply_to_message']['from']['id'])){
-  $replyUserID = $update['message']['reply_to_message']['from']['id'];
-}
-if(isset($update['message']['reply_to_message']['message_id'])){
-  $replyMessageID = $update['message']['reply_to_message']['message_id'];
-}
-if(isset($update['message']['reply_to_message']['chat']['id'])){
-  $replyChatID = $update['message']['reply_to_message']['chat']['id'];
-}
 
 if(isset($update['message']['from']['id'])) {
-    $userID = $update['message']['from']['id'];
+  $userID = $update['message']['from']['id'];
 }
 
 if(isset($update['message']['chat']['id'])) {
-    $chatID = $update['message']['chat']['id'];
+  $chatID = $update['message']['chat']['id'];
 }
 
 if(isset($update['message']['from']['first_name'])) {
-    $name = htmlspecialchars($update['message']['from']['first_name']);
-}
+  $nome = htmlspecialchars($update['message']['from']['first_name']);
+} 
 
-if(empty($update['message']['from']['last_name'])) {
-    $surname = "<b>Non disponibile.</b>";
+if(!empty($update['message']['from']['last_name'])) {
+  $cognome = htmlspecialchars($update['message']['from']['last_name']);
 } else {
-    $surname = $update['message']['from']['last_name'];
+  $cognome = "<b>Non disponibile.</b>";
 }
 
 if(empty($update['message']['from']['username'])) {
-      $username = "<b>Non disponibile.</b>";
+  $username = "<b>Non disponibile.</b>";
 } else {
-    $username = $update['message']['from']['username'];
+  $username = $update['message']['from']['username'];
 }
 
 if(isset($update['message']['message_id'])) {
-    $message_id = $update['message']['message_id'];
+  $messageID = $update['message']['message_id'];
 }
 
-if(isset($update['message']['chat'])) {
-    $titleGroup = htmlspecialchars($update['message']['chat']['title']);
+if(isset($update['message']['chat']['title'])) {
+  $titleGroup = htmlspecialchars($update['message']['chat']['title']);
 }
-if(empty($update['message']['chat']['username'])) {
-      $usernameGroup = "<b>Non disponibile.</b>";
+
+if(!empty($update['message']['chat']['username'])) {
+  $usernameGroup = $update['message']['chat']['username'];
 } else {
-    $usernameGroup = $update['message']['chat']['username'];
+  $usernameGroup = "<b>Non disponibile.</b>";
 }
 
-if(isset($update['message']['chat']['type']) ) {
-    $typeChat = $update['message']['chat']['type'];
+if(isset($update['message']['chat']['type'])) {
+  $typeChat = $update['message']['chat']['type'];
 }
 
-if(isset($update['callback_query'])) {
-    $queryID = $update['callback_query']['id'];
+if(!empty($update['message']['new_chat_member'])) {
+  $newChatMember = $update['message']['new_chat_member'];
+} else {
+  $newChatMember = '';
 }
-if(isset($update['callback_query']['from'])) {
-    $queryUserID = $update['callback_query']['from']['id'];
+
+if(!empty($update['message']['left_chat_member'])) {
+  $leftChatMember = $update['message']['left_chat_member'];
+} else {
+  $leftChatMember = '';
 }
-if(isset($update['callback_query']['message']['chat']['id'])){
-$queryChatID = $update['callback_query']['message']['chat']['id'];
-}
-if(isset($update['callback_query']['from']['first_name'])) {
-    $queryName = htmlspecialchars($update['callback_query']['from']['first_name']);
-}
-if(isset($update['callback_query'])) {
-    $queryMsgID = $update['callback_query']['message']['message_id'];
-    $queryChatType = $update['callback_query']['chat']['type'];
-}
-if(!empty($update['callback_query']['data'])){
+
+
+//variabili callback
+
+if(!empty($update['callback_query']['data'])) {
   $queryData = $update['callback_query']['data'];
 } else {
   $queryData = '';
 }
-if(empty($update['callback_query']['chat']['username'])){
-  $queryChatUsername = "<b>Non disponibile.</b>";
-  } else {
-  $queryChatUsername = $update['callback_query']['chat']['username'];
-  }
-if(empty($update['callback_query']['from']['username'])){
-  $queryUsername = "<b>Non disponibile.</b>";
-  } else {
+
+if(isset($update['callback_query']['from'])) {
+  $queryUserID = $update['callback_query']['from']['id'];
+}
+
+if(isset($update['callback_query']['message']['chat']['id'])) {
+  $queryChatID = $update['callback_query']['message']['chat']['id'];
+}
+
+if(isset($update['callback_query'])) {
+  $queryID = $update['callback_query']['id'];
+}
+
+if(isset($update['callback_query']['from']['first_name'])) {
+  $queryNome = htmlspecialchars($update['callback_query']['from']['first_name']);
+}
+
+if(!empty($update['callback_query']['from']['last_name'])) {
+  $queryCognome = htmlspecialchars($update['callback_query']['from']['last_name']);
+} else {
+  $queryCognome = "<b>Non disponibile.</b>";
+}
+
+if(!empty($update['callback_query']['from']['username'])) {
   $queryUsername = $update['callback_query']['from']['username'];
-  }
-if(empty($update['callback_query']['from']['last_name'])){
-  $querySurname = "<b>Non disponibile.</b>";
-  } else {
-  $querySurname = $update['callback_query']['from']['last_name'];
-  }
+} else {
+  $queryUsername = "<b>Non disponibile.</b>";
+}
+
+if(isset($update['callback_query']['message']['message_id'])) {
+  $queryMsgID = $update['callback_query']['message']['message_id'];
+}
+
 if(isset($update['callback_query']['chat']['title'])) {
-    $queryChatTitle = htmlspecialchars($update['callback_query']['chat']['title']);
+  $queryChatTitle = $update['callback_query']['chat']['title'];
+}
+
+if(!empty($update['callback_query']['chat']['username'])) {
+  $queryChatUsername = $update['callback_query']['chat']['username'];
+} else {
+  $queryChatUsername = "<b>Non disponibile.</b>";
+}
+
+if(isset($update['callback_query']['chat']['type'])) {
+  $queryChatType = $update['callback_query']['chat']['type'];
+}
+
+
+//variabili reply
+
+if(empty($update['message']['reply_to_message']['text'])) {
+  $replyText = $update['message']['reply_to_message']['text'];
+} else {
+  $replyText = '';
+}
+
+if(isset($update['message']['reply_to_message']['from']['id'])) {
+  $replyUserID = $update['message']['reply_to_message']['from']['id'];
+}
+
+if(isset($update['message']['reply_to_message']['chat']['id'])) {
+  $replyChatID = $update['message']['reply_to_message']['chat']['id'];
+}
+
+if(isset($update['message']['reply_to_message']['from']['first_name'])) {
+  $replyNome = htmlspecialchars($update['message']['reply_to_message']['from']['first_name']);
+}
+
+if(!empty($update['message']['reply_to_message']['from']['last_name'])) {
+  $replyCognome = htmlspecialchars($update['message']['reply_to_message']['from']['last_name']);
+} else {
+  $replyCognome = "<b>Non disponibile.</b>";
+}
+
+if(!empty($update['message']['reply_to_message']['from']['username'])) {
+  $replyUsername = $update['message']['reply_to_message']['from']['username'];
+} else {
+  $replyUsername = "<b>Non disponibile.</b>";
+}
+
+if(isset($update['message']['reply_to_message']['message_id'])) {
+  $replyMessageID = $update['message']['reply_to_message']['message_id'];
 }
