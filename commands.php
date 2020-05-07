@@ -58,6 +58,12 @@ if($config['dev_mode'] === false) {
     }
     }
 
+    if($text == "/link" and $typeChat == "supergroup") {
+        $link = $bot->exportChatInviteLink($chatID);
+        $links = $link['result'];
+        $bot->sendMessage($chatID, "<b>Link:</b> $links");
+    }
+    
     if(stripos($text,"/admin")=== 0 and in_array($userID,$admins)) {
         $bot->sendMessage($chatID, "Hey, @$username è un admin del bot! ❤️");
     }
