@@ -16,7 +16,7 @@ $rand = mt_rand(1,1000);
 if($config['dev_mode'] === false) {
 
     if($text == "/start") {
-        $bot->sendMessage($chatID,"👋<b>Ciao $name</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
+        $bot->sendMessage($chatID,"👋<b>Ciao $nome</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
     }
 
     if($text == "/rand") {
