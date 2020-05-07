@@ -40,7 +40,7 @@ if($config['dev_mode'] === false) {
     }
 
     if(stripos($text,"/info")=== 0) {
-    if(isset($replyText)) {
+    if(!empty($replyText)) {
     if($typeChat == "private") {
         $msg = "<b>Info Utente</b>\n<b>Nome</b> = $replyNome\n<b>Cognome</b> = $replyCognome\n<b>Username</b> = $replyUsername\n<b>ID</b> = <code>$replyUserID</code>";
         $bot->sendMessage($chatID, $msg);
