@@ -123,7 +123,7 @@ if(isset($update['callback_query']['chat']['type'])) {
 
 //variabili reply
 
-if(empty($update['message']['reply_to_message']['text'])) {
+if(!empty($update['message']['reply_to_message']['text'])) {
   $replyText = $update['message']['reply_to_message']['text'];
 } else {
   $replyText = '';
