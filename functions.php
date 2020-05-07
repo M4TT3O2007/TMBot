@@ -106,7 +106,7 @@ class bot {
        'chat_id' => $chat_id,
        'user_id' => $user_id
     ];
-        return $this->cURL('/promoteChatMember',$args);
+        return $this->cURL('/promoteChatMember', $args);
     }
 
     public function exportChatInviteLink($chat_id) {
@@ -114,5 +114,21 @@ class bot {
         'chat_id' => $chat_id
     ];
         return $this->cURL('/exportChatInviteLink', $args);
+    }
+    
+    public function kickChatMember($chat_id,$user_id){
+        $args = [
+        'chat_id' => $chat_id,
+        'user_id' => $user_id
+    ];
+        return $this->cURL('/kickChatMember', $args);
+    }
+
+    public function unbanChatMember($chat_id,$user_id){
+        $args = [
+        'chat_id' => $chat_id,
+        'user_id' => $user_id
+    ];
+        return $this->cURL('/unbanChatMember', $args);
     }
 }
