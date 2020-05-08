@@ -29,10 +29,10 @@ if(!empty($update['message']['from']['last_name'])) {
   $cognome = "<b>Non disponibile.</b>";
 }
 
-if(empty($update['message']['from']['username'])) {
-  $username = "<b>Non disponibile.</b>";
-} else {
+if(!empty($update['message']['from']['username'])) {
   $username = $update['message']['from']['username'];
+} else {
+  $username = "<b>Non disponibile.</b>";
 }
 
 if(isset($update['message']['message_id'])) {
