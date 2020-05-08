@@ -65,7 +65,7 @@ if($config['dev_mode'] === false) {
     }
     
     if(stripos($text,"/admin")=== 0 and in_array($userID,$admins)) {
-        $bot->sendMessage($chatID, "Hey, <a href='tg://user?id=$userID'>$nome</a> è un admin del bot! ❤️");
+        $bot->sendMessage($chatID, "Hey, $nome è un admin del bot! ❤️");
     }
 
     if(stripos($text,"/say")=== 0) {
