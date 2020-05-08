@@ -16,27 +16,27 @@ $rand = mt_rand(1,1000);
 if($config['dev_mode'] === false) {
 
     if($text == "/start") {
-        $bot->sendMessage($chatID,"👋<b>Ciao $nome</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
+        $bot->sendMessage($chatID, "👋<b>Ciao $nome</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>!\nClicca il button qua sotto per vedere cosa faccio!",$cmd,"inline");
     }
 
     if($text == "/rand") {
-        $bot->sendMessage($chatID,"<b>Numero random:</b> $rand");
+        $bot->sendMessage($chatID, "<b>Numero random:</b> $rand");
     }
 
     if($text == "/tfisica") {
-        $bot->sendMessage($chatID,"Tastiera fisica",$tastierafisica,"fisica");
+        $bot->sendMessage($chatID, "Tastiera fisica",$tastierafisica,"fisica");
     }
 
     if($text == "/tinline") {
-        $bot->sendMessage($chatID,"Tastiera inline",$tastierainline,"inline");
+        $bot->sendMessage($chatID, "Tastiera inline",$tastierainline,"inline");
     }
 
     if($text == "/dado") {
-        $bot->sendEmoji($chatID,"dado");
+        $bot->sendEmoji($chatID, "dado");
     }
 
     if($text == "/freccia") {
-        $bot->sendEmoji($chatID,"freccia");
+        $bot->sendEmoji($chatID, "freccia");
     }
 
     if(stripos($text,"/info")=== 0) {
@@ -54,7 +54,7 @@ if($config['dev_mode'] === false) {
         $bot->sendMessage($chatID, $msg);
     }
     } else {
-        $bot->sendMessage($chatID,"<b>Usa il comando in reply.</b>");
+        $bot->sendMessage($chatID,"<b>Usa il comando in reply a un messaggio.</b>");
     }
     }
 
@@ -65,7 +65,7 @@ if($config['dev_mode'] === false) {
     }
     
     if(stripos($text,"/admin")=== 0 and in_array($userID,$admins)) {
-        $bot->sendMessage($chatID, "Hey, @$username è un admin del bot! ❤️");
+        $bot->sendMessage($chatID, "Hey, <a href='tg://user?id=$userID'>$nome</a> è un admin del bot! ❤️");
     }
 
     if(stripos($text,"/say")=== 0) {
