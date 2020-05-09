@@ -31,12 +31,16 @@ if($config['dev_mode'] === false) {
         $bot->sendMessage($chatID, "Tastiera inline",$tastierainline,"inline");
     }
 
-    if($text == "/dado") {
-        $bot->sendEmoji($chatID, "dado");
-    }
-
     if($text == "/freccia") {
         $bot->sendEmoji($chatID, "freccia");
+    }
+
+    if($text == "/dado") {
+        $dado = $bot->sendEmoji($chatID, "dado");
+    if($config['spoiler'] === true){
+        $value = $dado['result']['dice']['value'];
+        $bot->sendMessage($chatID,"Spoiler: $value");
+    }
     }
 
     if(stripos($text,"/info")=== 0) {
