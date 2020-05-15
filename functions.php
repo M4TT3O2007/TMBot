@@ -60,6 +60,8 @@ class bot {
             $send = "🎯";
         } elseif($emoji == "dado") {
             $send = '🎲';
+        } elseif($emoji == "basket"){
+            $send = "🏀";
         }
         $args = [
         'chat_id' => $chatID,
