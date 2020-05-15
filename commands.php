@@ -34,6 +34,10 @@ if($config['dev_mode'] === false) {
     if($text == "/freccia") {
         $bot->sendEmoji($chatID, "freccia");
     }
+    
+    if($text == "/basket") {
+        $bot->sendEmoji($chatID, "basket");
+    }
 
     if($text == "/dado") {
         $dado = $bot->sendEmoji($chatID, "dado");
@@ -95,7 +99,7 @@ if($config['dev_mode'] === false) {
     }
 
     if($queryData == "cmd") {
-        $bot->editMessageText($queryChatID, $queryMsgID, "<b>Comandi del Bot</b>\n/tfisica = <b>Tastiera Fisica</b>\n/tinline = <b>Tastiera Inline</b>\n/rand = <b>Numero Random da 1 a 1000</b>\n/dado = <b>Manda un dado</b>\n/freccia = <b>Manda una freccia</b>\n/info = <b>Info Utente (solo in reply)</b>\n/admin = <b>Comando solo per admin del bot</b>\n/link = <b>Manda il link del gruppo (funzionante solo nei gruppi)</b>\n/say = <b>Per far inviare un messaggio al bot</b>");
+        $bot->editMessageText($queryChatID, $queryMsgID, "<b>Comandi del Bot</b>\n/tfisica = <b>Tastiera Fisica</b>\n/tinline = <b>Tastiera Inline</b>\n/rand = <b>Numero Random da 1 a 1000</b>\n/dado = <b>Manda un dado</b>\n/freccia = <b>Manda una freccia</b>\n/basket = <b>Lancia una palla da basket</b>\n/info = <b>Info Utente (solo in reply)</b>\n/admin = <b>Comando solo per admin del bot</b>\n/link = <b>Manda il link del gruppo (funzionante solo nei gruppi)</b>\n/say = <b>Per far inviare un messaggio al bot</b>");
     }
 
 }
