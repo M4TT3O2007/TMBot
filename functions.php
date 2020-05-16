@@ -13,7 +13,7 @@ class bot {
         return json_decode($output, TRUE);
     }
 
-    public function sendMessage($chat_id, $text, $key = false, $type = false) {
+    public function sendMessage($chat_id, $text, $key = false, $type = false, $preview = false, $parse_mode = false) {
     if($key != false) {
         if($type == 'fisica') {
             $keyboard = '{"keyboard":['.$key.'],"resize_keyboard":true}';
@@ -23,17 +23,35 @@ class bot {
         } else {
             $keyboard = '';
         }
+        if($preview != false) {
+        if($preview == false) {
+            $disable_web_page_preview = false;
+        } elseif($preview == true) {
+            $disable_web_page_preview = true;
+        } else {
+            $disable_web_page_preview = true;
+        }
+        }
+        if($parse_mode != false) {
+        if($parse_mode == "HTML") {
+            $parse = "HTML";
+        } elseif($parse_mode == "markdown"){
+            $parse = "markdown";
+        } else {
+            $parse = "HTML";
+        }
+        }
             $args = [
                 'chat_id' => $chat_id,
-                'parse_mode' => 'HTML',
-                'disable_web_page_preview' => true,
+                'parse_mode' => $parse,
+                'disable_web_page_preview' => $disable_web_page_preview,
                 'text' => $text,
                 'reply_markup' => $keyboard
             ];
         return $this->cURL('/sendMessage', $args);
     }
 
-    public function editMessageText($chat_id, $message_id, $text, $key = false, $type = false) {
+    public function editMessageText($chat_id, $message_id, $text, $key = false, $type = false, $preview = false, $parse_mode = false) {
         if($key != false) {
             if($type == 'fisica') {
                 $keyboard = '{"keyboard":['.$key.'],"resize_keyboard":true}';
@@ -43,14 +61,32 @@ class bot {
             } else {
                 $keyboard = '';
             }
+            if($preview != false) {
+            if($preview == false) {
+                $disable_web_page_preview = false;
+            } elseif($preview == true) {
+                $disable_web_page_preview = true;
+            } else {
+                $disable_web_page_preview = true;
+            }
+            }
+            if($parse_mode != false) {
+            if($parse_mode == "HTML") {
+                $parse = "HTML";
+            } elseif($parse_mode == "markdown"){
+                $parse = "markdown";
+            } else {
+                $parse = "HTML";
+            }
+            }
                 $args = [
-                'chat_id' => $chat_id,
-                'message_id' => $message_id,
-                'parse_mode' => 'HTML',
-                'disable_web_page_preview' => true,
-                'text' => $text,
-                'reply_markup' => $keyboard
-            ];
+                    'chat_id' => $chat_id,
+                    'message_id' => $message_id,
+                    'parse_mode' => $parse,
+                    'disable_web_page_preview' => $disable_web_page_preview,
+                    'text' => $text,
+                    'reply_markup' => $keyboard
+                ];
         return $this->cURL('/editMessageText', $args);
     }
 
