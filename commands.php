@@ -18,7 +18,7 @@ if($config['dev_mode'] === false) {
     if($text == "/start") {
         $bot->sendMessage($chatID, "👋<b>Ciao $nome</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
     } elseif($queryData == "/start") {
-        $bot->editMessageText($queryChatID, $queryMsgID, "👋<b>Ciao $nome</b>!\nQuesto è il framework per bot ufficiale di <a href='tg://user?id=674965839'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
+        $bot->editMessageText($queryChatID, $queryMsgID, "👋<b>Ciao $queryNome</b>!\nQuesto è il framework per bot ufficiale di <a href='tg://user?id=674965839'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
     }   
 
     if($text == "/rand") {
