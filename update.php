@@ -19,9 +19,11 @@ if(isset($update['message']['chat']['id'])) {
   $chatID = $update['message']['chat']['id'];
 }
 
-if(isset($update['message']['from']['first_name'])) {
+if(!empty($update['message']['from']['first_name'])) {
   $nome = htmlspecialchars($update['message']['from']['first_name']);
-} 
+} else {
+  $nome = "<b>Non disponibile.</b>";
+}
 
 if(!empty($update['message']['from']['last_name'])) {
   $cognome = htmlspecialchars($update['message']['from']['last_name']);
