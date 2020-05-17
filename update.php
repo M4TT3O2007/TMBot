@@ -88,8 +88,10 @@ if(isset($update['callback_query'])) {
   $queryID = $update['callback_query']['id'];
 }
 
-if(isset($update['callback_query']['from']['first_name'])) {
+if(!empty($update['callback_query']['from']['first_name'])) {
   $queryNome = htmlspecialchars($update['callback_query']['from']['first_name']);
+} else {
+  $queryNome = "<b>Non disponibile.</b>";
 }
 
 if(!empty($update['callback_query']['from']['last_name'])) {
