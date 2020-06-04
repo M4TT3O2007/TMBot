@@ -5,7 +5,7 @@ include __DIR__ . '/update.php';
 
 $bot = new bot;
 $update = new update;
-$tastiera_inline = '[{"text":"LorenzoTM88","url":"t.me/LorenzoTM88"},{"text":"Tastiera 2","callback_data":"answerQuery"},{"text":"Tastiera 3","callback_data":"tast3"}],[{"text":"Chiudi","callback_data":"chiudi"}]';
+$tastiera_inline = '[{"text":"LorenzoTM88","url":"t.me/Stonarsi"},{"text":"Tastiera 2","callback_data":"answerQuery"},{"text":"Tastiera 3","callback_data":"tast3"}],[{"text":"Chiudi","callback_data":"chiudi"}]';
 $tastiera_fisica = '["Tastiera 1"],["Tastiera 2","Tastiera 3"],["Tastiera 4"]';
 $cmd = '[{"text":"ℹ️ Comandi del Bot","callback_data":"cmd"}]';
 $config = json_decode(file_get_contents(__DIR__ . '/config.json'),TRUE);
@@ -19,9 +19,9 @@ $rand = mt_rand(1,1000);
 if($dev_mode === false) {
 
     if($update->text == "/start") {
-        $bot->sendMessage($update->chatID, "👋<b>Ciao ".$update->nome."</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
+        $bot->sendMessage($update->chatID, "👋<b>Ciao ".$update->nome."</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/Stonarsi'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
     } elseif($update->queryData == "/start") {
-        $bot->editMessageText($update->queryChatID, $update->queryMsgID, "👋<b>Ciao ".$update->queryNome."</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/LorenzoTM88'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
+        $bot->editMessageText($update->queryChatID, $update->queryMsgID, "👋<b>Ciao ".$update->queryNome."</b>!\nQuesto è il framework per bot ufficiale di <a href='t.me/Stonarsi'>LorenzoTM88</a>", $cmd, "inline", true, "HTML");
     }   
 
     if($update->text == "/rand") {
