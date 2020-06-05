@@ -5,7 +5,7 @@ include __DIR__ . '/update.php';
 
 $bot = new bot;
 $update = new update;
-$tastiera_inline = '[{"text":"LorenzoTM88","url":"t.me/Stonarsi"},{"text":"Tastiera 2","callback_data":"answerQuery"},{"text":"Tastiera 3","callback_data":"tast3"}],[{"text":"Chiudi","callback_data":"chiudi"}]';
+$tastiera_inline = '[{"text":"LorenzoTM88","url":"t.me/Stonarsi"},{"text":"Tastiera 2","callback_data":"answerQuery"}],[{"text":"Popup","callback_data":"popup"},{"text":"Tastiera 3","callback_data":"tast3"}],[{"text":"Chiudi","callback_data":"chiudi"}]';
 $tastiera_fisica = '["Tastiera 1"],["Tastiera 2","Tastiera 3"],["Tastiera 4"]';
 $cmd = '[{"text":"ℹ️ Comandi del Bot","callback_data":"cmd"}]';
 $config = json_decode(file_get_contents(__DIR__ . '/config.json'),TRUE);
@@ -112,6 +112,10 @@ if($dev_mode === false) {
 
     if($update->queryData == "chiudi") {
         $bot->deleteMessage($update->queryChatID, $update->queryMsgID);
+    }
+
+    if($update->queryData == "popup") {
+        $bot->answerCallbackQuery($update->queryID,"Ciao!",true);
     }
 
 } elseif($dev_mode === true) {
