@@ -116,10 +116,20 @@ class bot {
     return $this->cURL('/forwardMessage', $args);
     }
 
-    public function answerCallbackQuery($callbackQueryID, $text) {
+    public function answerCallbackQuery($callbackQueryID, $text, $popup = false) {
+        if($popup != false) {
+            if($popup == true) {
+            $show_alert = true;
+        } elseif($popup == false) {
+            $show_alert = false;
+        } else {
+            $show_alert = false;
+        }
+    }
         $args = [
         'callback_query_id' => $callbackQueryID, 
-        'text' => $text
+        'text' => $text,
+        'show_alert' => $show_alert
     ];
         return $this->cURL('/answerCallbackQuery', $args);
     }
